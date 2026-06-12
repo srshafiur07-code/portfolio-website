@@ -1,72 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>CGPA Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional CGPA Calculator</title>
+
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
 body{
-font-family:Arial,sans-serif;
-background:#f2f2f2;
-text-align:center;
-padding:20px;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
 }
 
 .container{
-background:white;
-padding:20px;
-max-width:400px;
-margin:auto;
-border-radius:10px;
-box-shadow:0 0 10px gray;
+    width:90%;
+    max-width:420px;
+    background:#111827;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,255,255,0.2);
+    text-align:center;
 }
 
-input{ 
-width:80%;
-padding:10px;
-margin:10px;
+h1{
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    background:#1f2937;
+    color:white;
+    font-size:16px;
+}
+
+input:focus{
+    outline:2px solid #38bdf8;
 }
 
 button{
-padding:10px 20px;
-background:#007bff;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+    color:#000;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-h2{
-color:#333;
+button:hover{
+    transform:scale(1.03);
+}
+
+.result{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:#1f2937;
+    font-size:20px;
+    font-weight:bold;
+    color:#22c55e;
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
-<h2>CGPA Calculator</h2>
+    <h1>🎓 CGPA Calculator</h1>
+    <p>Enter your GPA and Total Credits</p>
 
-<input type="number" id="gpa" placeholder="Enter GPA">
-<input type="number" id="credits" placeholder="Enter Credits">
+    <input type="number" id="gpa" placeholder="Enter GPA (0 - 10)" step="0.01">
 
-<br>
+    <input type="number" id="credits" placeholder="Enter Total Credits">
 
-<button onclick="calculateCGPA()">Calculate</button>
+    <button onclick="calculateCGPA()">Calculate CGPA</button>
 
-<h3 id="result"></h3>
+    <div class="result" id="result">
+        Your CGPA will appear here
+    </div>
 </div>
 
 <script>
 function calculateCGPA(){
-let gpa = parseFloat(document.getElementById("gpa").value);
-let credits = parseFloat(document.getElementById("credits").value);
 
-if(isNaN(gpa) || isNaN(credits)){
-document.getElementById("result").innerHTML =
-"Please enter valid values";
-return;
-}
+    let gpa = parseFloat(document.getElementById("gpa").value);
+    let credits = parseFloat(document.getElementById("credits").value);
 
-document.getElementById("result").innerHTML =
-"CGPA: " + gpa.toFixed(2);
+    if(isNaN(gpa) || isNaN(credits)){
+        document.getElementById("result").innerHTML =
+        "⚠ Please enter valid values";
+        return;
+    }
+
+    let cgpa = (gpa * credits) / credits;
+
+    document.getElementById("result").innerHTML =
+    "✅ CGPA: " + cgpa.toFixed(2);
 }
 </script>
 
