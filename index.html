@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CGPA Calculator</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f2f2f2;
+text-align:center;
+padding:20px;
+}
+
+.container{
+background:white;
+padding:20px;
+max-width:400px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input{
+width:80%;
+padding:10px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+h2{
+color:#333;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>CGPA Calculator</h2>
+
+<input type="number" id="gpa" placeholder="Enter GPA">
+<input type="number" id="credits" placeholder="Enter Credits">
+
+<br>
+
+<button onclick="calculateCGPA()">Calculate</button>
+
+<h3 id="result"></h3>
+</div>
+
+<script>
+function calculateCGPA(){
+let gpa = parseFloat(document.getElementById("gpa").value);
+let credits = parseFloat(document.getElementById("credits").value);
+
+if(isNaN(gpa) || isNaN(credits)){
+document.getElementById("result").innerHTML =
+"Please enter valid values";
+return;
+}
+
+document.getElementById("result").innerHTML =
+"CGPA: " + gpa.toFixed(2);
+}
+</script>
+
+</body>
+</html>
