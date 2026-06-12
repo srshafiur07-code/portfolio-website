@@ -1,1 +1,67 @@
-index.html 
+<!DOCTYPE html>
+<html>
+<head>
+<title>CGPA Calculator</title>
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f2f2f2;
+padding:20px;
+}
+.container{
+background:white;
+padding:20px;
+border-radius:10px;
+max-width:400px;
+margin:auto;
+box-shadow:0 0 10px gray;
+}
+input{
+width:80%;
+padding:10px;
+margin:10px;
+}
+button{
+padding:10px 20px;
+background:blue;
+color:white;
+border:none;
+border-radius:5px;
+}
+h1{
+color:blue;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>CGPA Calculator</h1>
+
+<input type="number" id="s1" placeholder="Semester 1 GPA"><br>
+<input type="number" id="s2" placeholder="Semester 2 GPA"><br>
+<input type="number" id="s3" placeholder="Semester 3 GPA"><br>
+<input type="number" id="s4" placeholder="Semester 4 GPA"><br>
+
+<button onclick="calculate()">Calculate CGPA</button>
+
+<h2 id="result"></h2>
+</div>
+
+<script>
+function calculate(){
+let s1=parseFloat(document.getElementById("s1").value)||0;
+let s2=parseFloat(document.getElementById("s2").value)||0;
+let s3=parseFloat(document.getElementById("s3").value)||0;
+let s4=parseFloat(document.getElementById("s4").value)||0;
+
+let cgpa=(s1+s2+s3+s4)/4;
+
+document.getElementById("result").innerHTML=
+"Your CGPA = "+cgpa.toFixed(2);
+}
+</script>
+
+</body>
+</html>
